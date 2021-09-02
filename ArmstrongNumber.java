@@ -2,30 +2,28 @@ import java.util.Scanner;
 
 public class ArmstrongNumber {
     public static void main(String[] args) {
-        Scanner Scan = new Scanner(System.in);
+        getNumber();
+    }
 
+    public static void getNumber() {
+        Scanner Scan = new Scanner(System.in);
+        
         System.out.println("Enter the starting number of the range:");
         var startRange = Scan.nextInt(); // Wait for input
         System.out.println("Enter the ending number of the range: ");
         var endRange = Scan.nextInt();
 
-        for (int i = startRange; i < endRange; startRange++) {
+        for (int i = startRange; i < endRange; i++) {
+            char[] charsStart = String.valueOf(i).toCharArray();
+            int sum = 0;
+            
+            for (int j = 0; j < charsStart.length; j++) {
+                int currentNumber = charsStart[j] - '0';
+                sum += currentNumber * currentNumber * currentNumber;
+            }
 
-            int number = 371;
-            int x = 3;
-            int y = 7;
-            int z = 1;
-
-            // TODO: Input numbers into formula and delete above
-
-            int a = x * x * x;
-            int b = y * y * y;
-            int c = z * z * z; 
-
-            int sum = a + b + c;
-
-            if (sum == i) {
-                System.out.println(number);
+            if (sum == i) { // If armstrong number is found, print it
+                System.out.println(sum);
             }
         }
 
@@ -35,11 +33,11 @@ public class ArmstrongNumber {
     static void await() {
         Scanner Scan = new Scanner(System.in);
         System.out.println("Do you want to repeat? (Y/N):");
-        var q = Scan.next(); // Wait for input
+        String q = Scan.nextLine(); // Wait for input
 
-        if (q.toLowerCase() == "y") {
-            main(null);
-        } else if (q.toLowerCase() == "n") {
+        if (q.equalsIgnoreCase("y")) {
+            getNumber();
+        } else if (q.equalsIgnoreCase("n")) {
             System.exit(0);
         } else {
             await();
