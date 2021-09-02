@@ -25,15 +25,15 @@ public class ISBN {
             
 
             
-            for (int i = 0; i < zerosNeeded + String.valueOf(userInput).length() + 1; i++) { // for each zero needed, add those to the string
+            for (int i = 0; i < zerosNeededOriginally + String.valueOf(userInput).length(); i++) { // for each zero needed, add those to the string
                 newArray[i] = '0';
 
                 if (zerosNeeded != 0) {
                     zerosNeeded--;
                     newArray[i] = '0';
-                    System.out.println("Added a zero. Zeros need is now: " + zerosNeeded);
+                    //System.out.println("Added a zero. Zeros need is now: " + zerosNeeded);
                 } else {
-                    System.out.println("Added the number " + chars[i - zerosNeededOriginally]);
+                    //System.out.println("Added the number " + chars[i - zerosNeededOriginally]);
                     newArray[i] = chars[i - zerosNeededOriginally];
                 }
             }
@@ -44,7 +44,7 @@ public class ISBN {
             inputString = String.valueOf(userInput); // Make into string
         }
 
-        System.out.println("Array is: " + Arrays.toString(newArray));
+        //System.out.println("Array is: " + Arrays.toString(newArray));
 
 
         int[] n = new int [9];
@@ -52,15 +52,17 @@ public class ISBN {
             n[i] = newArray[i] - '0'; // to convert from char to int
         }
 
-        System.out.println("Array is: " + Arrays.toString(n));
+        //System.out.println("Array is: " + Arrays.toString(n));
 
         int checksum = (n[0] * 1 + n[1] * 2 + n[2] * 3 + n[3] * 4 + n[4] * 5 + n[5] * 6 + n[6] * 7 + n[7] * 8 + n[8] * 9) % 11; // Use char array on formula
 
         //System.out.println("Checksum is: " + checksum);
+
+        String result = String.valueOf(newArray);
         if (checksum == 10) {
-            System.out.println("The ISBN-10 number is: " + userInput + "X");
+            System.out.println("The ISBN-10 number is: " + result + "X");
         } else {
-            System.out.println("The ISBN-10 number is: " + userInput + checksum);
+            System.out.println("The ISBN-10 number is: " + result + checksum);
         }
     }
 }
