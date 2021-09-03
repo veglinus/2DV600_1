@@ -19,7 +19,7 @@ public class ArmstrongNumber {
             
             for (int j = 0; j < charsStart.length; j++) {
                 int currentNumber = charsStart[j] - '0';
-                sum += currentNumber * currentNumber * currentNumber;
+                sum += Math.pow(currentNumber, charsStart.length); // The digit chosen to the power of the amount of digits in the entire number
             }
 
             if (sum == i) { // If armstrong number is found, print it
