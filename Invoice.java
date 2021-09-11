@@ -52,7 +52,7 @@ public class Invoice {
 }
 
 class InvoiceTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) { // TODO
 
         // Let's make a guac
         var avocados = new Invoice("001", "An avocado", 3, 15.5);

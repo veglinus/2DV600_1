@@ -1,3 +1,9 @@
+import java.util.Set;
+
+import javax.xml.validation.Validator;
+
+// TODO: this
+
 public class Time {
     int hours;
     int minutes;
@@ -31,7 +37,30 @@ public class Time {
                 var input2 = input % 60;
                 this.minutes = (input2 - (input2 % 60)) / 60;
                 this.seconds = input2 % 60;
+
+                if (this.hours > 24) {
+                    throw new IllegalArgumentException("Hours cannot be more than 24.");
+                }
             }
         }
+    }
+
+    public int getHours() {
+        return hours;
+    }
+    public int getMinutes() {
+        return minutes;
+    }
+    public int getSeconds() {
+        return seconds;
+    }
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
 }
