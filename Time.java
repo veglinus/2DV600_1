@@ -1,6 +1,7 @@
 import java.util.Set;
-
 import javax.xml.validation.Validator;
+
+import jdk.jfr.Timespan;
 
 // TODO: this
 
@@ -46,5 +47,77 @@ public class Time {
             this.hours += (this.minutes - (this.minutes % 60)) / 60;
             this.minutes = this.minutes % 60;
         }
+    }
+
+    public int getHours() {
+        return hours;
+    }
+    public int getMinutes() {
+        return minutes;
+    }
+    public int getSeconds() {
+        return seconds;
+    }
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
+    }
+
+    public void tick() {
+        this.seconds++;
+        validate();
+    }
+
+    public void tickDown() { // TODO: Test what happens if we go below 0
+        this.seconds--;
+        validate();
+    }
+
+    public Time addTime(Time time) { // TODO: test
+
+        int oldHours = this.hours + time.hours;
+        int oldMinutes = this.minutes + time.minutes;
+        int oldSeconds = this.seconds + time.seconds;
+
+        return new Time(oldHours, oldMinutes, oldSeconds);
+    }
+
+    public Time subtractTime(Time time) { // TODO: test
+
+        int oldHours = this.hours - time.hours;
+        int oldMinutes = this.minutes - time.minutes;
+        int oldSeconds = this.seconds - time.seconds;
+
+        return new Time(oldHours, oldMinutes, oldSeconds);
+    }
+
+    public String toString() {
+
+        String timeString = "";
+
+        if (this.hours < 10) { // If less than 10, we need a leading zero for correct formatting
+            timeString += "0" + this.hours;
+        } else {
+            timeString += this.hours;
+        }
+
+        if (this.minutes < 10) {
+            timeString += "0" + this.minutes;
+        } else {
+            timeString += this.minutes;
+        }
+
+        if (this.seconds < 10) {
+            timeString += "0" + this.seconds;
+        } else {
+            timeString += this.seconds;
+        }
+
+        return timeString;
     }
 }

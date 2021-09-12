@@ -47,7 +47,7 @@ public class Arrays {
         }
     }
 
-    public static int[] sort(int[] arr) { // TODO: Ask if this is cheesing it
+    public static int[] sort(int[] arr) { // TODO: TEACHER Ask if this is cheesing it
         
         int[] newarray = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -115,7 +115,7 @@ public class Arrays {
         and be handled within the program.
         */
 
-        // TODO: "be handled within the program"? Ask for new user input?
+        // TODO: TEACHER "be handled within the program"? Ask for new user input?
 
         return newarray;
     }
