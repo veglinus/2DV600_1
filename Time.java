@@ -1,10 +1,3 @@
-import java.util.Set;
-import javax.xml.validation.Validator;
-
-import jdk.jfr.Timespan;
-
-// TODO: this
-
 public class Time {
     int hours;
     int minutes;
@@ -47,6 +40,22 @@ public class Time {
             this.hours += (this.minutes - (this.minutes % 60)) / 60;
             this.minutes = this.minutes % 60;
         }
+
+        if (this.minutes < 0) { // Handles negative minutes, convert an hour to 60 mins
+            this.hours--;
+            this.minutes += 60;
+        }
+
+        if (this.hours < 0) {
+            throw new IllegalArgumentException("Hours cannot exceed minus zero.");
+        }
+
+        if (this.hours > 23) {
+            throw new IllegalArgumentException("Hours cannot exceed 24 hours.");
+        }
+        if (this.seconds < 0) {
+            throw new IllegalArgumentException("Seconds cannot exceed less than 0.");
+        }
     }
 
     public int getHours() {
@@ -73,12 +82,12 @@ public class Time {
         validate();
     }
 
-    public void tickDown() { // TODO: Test what happens if we go below 0
+    public void tickDown() {
         this.seconds--;
         validate();
     }
 
-    public Time addTime(Time time) { // TODO: test
+    public Time addTime(Time time) {
 
         int oldHours = this.hours + time.hours;
         int oldMinutes = this.minutes + time.minutes;
@@ -87,7 +96,7 @@ public class Time {
         return new Time(oldHours, oldMinutes, oldSeconds);
     }
 
-    public Time subtractTime(Time time) { // TODO: test
+    public Time subtractTime(Time time) {
 
         int oldHours = this.hours - time.hours;
         int oldMinutes = this.minutes - time.minutes;
@@ -106,11 +115,15 @@ public class Time {
             timeString += this.hours;
         }
 
+        timeString += ":";
+
         if (this.minutes < 10) {
             timeString += "0" + this.minutes;
         } else {
             timeString += this.minutes;
         }
+
+        timeString += ":";
 
         if (this.seconds < 10) {
             timeString += "0" + this.seconds;

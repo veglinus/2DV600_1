@@ -1,21 +1,47 @@
+import java.util.Scanner;
 
 public class TimeDemo {
-    public static void main(String[] args) { // TODO
-        /**
-         * instantiate a Time object timeA using an integer value obtained from the keyboard. The
-        integer value represents seconds passed since midnight.
-        • tick the clock ten times by applying its tick() method and print out the time after each tick.
-        • Extend your code by appending to it instructions instantiating a Time object timeB by using
-        three integers (hours, minutes, seconds) read from the keyboard.
-        • Then tick the clock ten times, printing the time after each tick.
-        • Add the timeB time in timeA by calling method addTime method and print sum of the time
-        returned by the addTime method.
-        • Create a reference timeC that should reference to object of difference of timeA and timeB
-        by calling the method subtracTime (), print the time represented by the reference timeC.
-         */
-
-        var test = new Time(3, 61, 61);
-        System.out.println(test.hours + ":" + test.minutes + ":" + test.seconds);
+    public static void main(String[] args) {
+        try {
+            Scanner Scan = new Scanner(System.in);
         
+            System.out.println("Enter the starting time in seconds.");
+            int input = Scan.nextInt(); // Wait for input
+    
+            Time timeA = new Time(input);
+            System.out.println("The time is: " + timeA.toString());
+
+            for (int i = 0; i < 10; i++) { // Tick 10 times
+                timeA.tick();
+                System.out.println("Tick! Time is now: " + timeA.toString());
+            }
+
+            System.out.println("Enter a new time, starting with hours.");
+            int hours = Scan.nextInt();
+
+            System.out.println("Enter minutes.");
+            int minutes = Scan.nextInt();
+
+            System.out.println("Enter seconds.");
+            int seconds = Scan.nextInt();
+
+            Time timeB = new Time(hours, minutes, seconds);
+            System.out.println("The time you entered is: " + timeB.toString());
+
+            for (int i = 0; i < 10; i++) { // Tick 10 times
+                timeB.tick();
+                System.out.println("Tick! Time is now: " + timeB.toString());
+            }
+
+            Time timeSum = timeA.addTime(timeB);
+            System.out.println("Added timeB to timeA! Time is now: " + timeSum.toString());
+
+            Time timeC = timeA.subtractTime(timeB);
+            System.out.println("timeA minus timeB is: " + timeC.toString());
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            main(null);
+        }
     }
 }
