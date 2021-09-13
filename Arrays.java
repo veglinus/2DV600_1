@@ -89,33 +89,17 @@ public class Arrays {
         }
 
         return result;
-
-        /*
-            that returns true if the array sub is a part of the
-            array arr, otherwise false. For example, in the case hasSubString({1,2,3,4,5}, {3,4,5}) the result is
-            true since {3,4,5} is a part of {1,2,3,4,5}, but in case hasSubString({1,2,3,4,5}, {2,3,5}) the result is
-            false
-         */
     }
 
     public static int[] absDif(int[] arr1, int[] arr2) {
 
+        // TODO: TEACHER "be handled within the program"? Ask for new user input?
         if (arr1.length != arr2.length) throw new IllegalArgumentException("Arrays provided must be of the same length.");
 
         int[] newarray = new int[arr1.length];
         for (int i = 0; i < arr1.length; i++) {
             newarray[i] = arr1[i] -= arr2[i];
         }
-
-        /*
-        returns a new array that is the absolute difference
-        between array arr1 and array arr2. That is result array dist(i) = |arr1(i) - arr2(i)|. For example,
-        in the case absDif({1,2,3,4,5}, {1,1,1,1,1}) the result is {0,1,2,3,4}. Notice, that the sizes of both
-        arrays should be the same, in case they are different the method should throw an exception
-        and be handled within the program.
-        */
-
-        // TODO: TEACHER "be handled within the program"? Ask for new user input?
 
         return newarray;
     }
