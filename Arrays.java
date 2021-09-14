@@ -3,7 +3,7 @@ public class Arrays {
 
         double value = 0;
         for (int i : arr) {
-            System.out.println("Added " + i);
+            //System.out.println("Added " + i);
             value += i;
         }
 
@@ -13,7 +13,16 @@ public class Arrays {
     }
 
     public static int max(int[] arr) {
-        java.util.Arrays.sort(arr); // Sorts array from lowest to highest
+        for (int i = 0; i < arr.length; i++) {  
+            for (int index2 = i + 1; index2 < arr.length; index2++) {  
+                int current;
+                if (arr[i] > arr[index2]) {  
+                    current = arr[i];  
+                    arr[i] = arr[index2];  
+                    arr[index2] = current;  
+                }  
+            }  
+        }  
         return arr[arr.length - 1]; // Grab last value of array(which is highest)
     }
 
@@ -45,13 +54,23 @@ public class Arrays {
         }
     }
 
-    public static int[] sort(int[] arr) { // TODO: TEACHER Ask if this is cheesing it
+    public static int[] sort(int[] arr) {
         
         int[] newarray = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) { // New array
             newarray[i] = arr[i];
         }
-        java.util.Arrays.sort(newarray);
+
+        for (int j = 0; j < newarray.length; j++) {  
+            for (int index2 = j + 1; index2 < newarray.length; index2++) {  
+                int current;
+                if (newarray[j] > newarray[index2]) {  
+                    current = newarray[j];  
+                    newarray[j] = newarray[index2];  
+                    newarray[index2] = current;  
+                }  
+            }  
+        }  
 
         return newarray;
     }
@@ -91,7 +110,6 @@ public class Arrays {
 
     public static int[] absDif(int[] arr1, int[] arr2) {
 
-        // TODO: TEACHER "be handled within the program"? Ask for new user input?
         if (arr1.length != arr2.length) throw new IllegalArgumentException("Arrays provided must be of the same length.");
 
         int[] newarray = new int[arr1.length];

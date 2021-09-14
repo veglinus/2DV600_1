@@ -18,8 +18,8 @@ public class Anagram {
                     char[] inputChars = input.toCharArray();
                     char[] lineChars = line.toCharArray();
 
-                    Arrays.sort(inputChars);
-                    Arrays.sort(lineChars);
+                    Arrays.sort(inputChars); // TODO: Don't use arrays.sort
+                    Arrays.sort(lineChars); // TODO: Don't use arrays.sort
 
                     if (Arrays.equals(inputChars, lineChars)) { // If the char ararys are equal
                         System.out.println(line);
