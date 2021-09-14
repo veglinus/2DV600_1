@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ISBN {
@@ -22,8 +21,6 @@ public class ISBN {
 
             //System.out.println("We need " + zerosNeeded + " zeros");
             //System.out.println(zerosNeeded + String.valueOf(userInput).length() + "are the amount of times we're iterating");
-            
-
             
             for (int i = 0; i < zerosNeededOriginally + String.valueOf(userInput).length(); i++) { // for each zero needed, add those to the string
                 newArray[i] = '0';

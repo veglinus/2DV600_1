@@ -38,12 +38,12 @@ public class Codestrip {
                 
                 
                 if (line.indexOf("/*") != -1) { // Check if there is a long comment we need to remove
-                    line = ""; // Make line blank if we found the end of the comment
                     commentsRemoved++; // This counts as one "big" comment
 
                     if (line.indexOf("*/") == -1) { // Check for end of comment
                         removeNext = true; // Didn't find end of comment, we're checking next line for end of comment
                     }
+                    line = ""; // Make line blank if we found the end of the comment
                 }
 
                 if (!line.isEmpty()) { // If line is not blank at this point, print it because it's code
