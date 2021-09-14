@@ -1,9 +1,7 @@
 public class Arrays {
-    public static int average(int[] arr) { // Not working atm
+    public static double average(int[] arr) {
 
-        java.util.Arrays.sort(arr);
-
-        int value = 0;
+        double value = 0;
         for (int i : arr) {
             System.out.println("Added " + i);
             value += i;
@@ -11,7 +9,7 @@ public class Arrays {
 
         double output = value / arr.length;
 
-        return 1;
+        return output;
     }
 
     public static int max(int[] arr) {

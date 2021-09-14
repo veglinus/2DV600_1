@@ -5,6 +5,8 @@ public class ArraysMain {
 
             System.out.println("We're starting with an array with the following values: " + java.util.Arrays.toString(array));
     
+            System.out.println("The average of our array is: " + Arrays.average(array));
+
             System.out.println("Using addN, we add 2 to each value: " + java.util.Arrays.toString(Arrays.addN(array, 2)));
     
             System.out.println("We can now reverse this array: " + java.util.Arrays.toString(Arrays.reverse(array)));
@@ -26,8 +28,8 @@ public class ArraysMain {
             int[] newarray = Arrays.absDif(array, array3);
     
             System.out.println("The result is: " + java.util.Arrays.toString(newarray));
-            
-        } catch (Exception e) {
+
+        } catch (Exception e) { 
             System.out.println("Error: " + e);
             main(null);
         }
